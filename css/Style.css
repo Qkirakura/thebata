@@ -28,7 +28,7 @@ body {
 
 .hero {
   height: 80vh;
-  background: url('https:github.com/Qkirakura/thebata/image/brick-wall-1.jpg') no-repeat center center/cover;
+  background: url("https:github.com/Qkirakura/thebata/image/brick-wall-1.jpg") no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
