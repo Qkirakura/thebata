@@ -130,8 +130,8 @@ footer {
 }
 
 .produk-item img {
-  width: auto;
-  height: auto;
+  width: 100%; max-width: 800px;
+  height: 100%; max-width: 800px;
   border-radius: 10px;
 }
 
