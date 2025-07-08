@@ -32,7 +32,7 @@ body {
 
 .hero {
   height: 80vh;
-  background: url('../images/hero.jpg') center/cover no-repeat;
+  background: url('../image/brick-wall-1.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
