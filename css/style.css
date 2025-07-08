@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f4f4f4;
@@ -19,7 +23,7 @@ body {
   box-shadow: 0 1px 6px rgba(0,0,0,0.1);
 }
 
-.navbar nav a {
+.navbar a:hover {
   margin-left: 1rem;
   color: #333;
   text-decoration: none;
@@ -28,7 +32,7 @@ body {
 
 .hero {
   height: 80vh;
-  background: url('../image/brick-wall-1.jpg') no-repeat center center/cover;
+  background: url('../images/hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,10 +40,22 @@ body {
 }
 
 .hero-content {
+  animation: fadeIn 1.2 sec ease-in;
   background: rgba(0,0,0,0.5);
   padding: 2rem;
   color: white;
   border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 .btn {
@@ -61,8 +77,10 @@ body {
 video {
   width: 100%;
   max-width: 800px;
+  height: auto;
   margin-top: 1rem;
-  border-radius: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -78,39 +96,43 @@ footer {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .navbar nav {
+    margin-top: 1rem;
+  }
+
+  .hero {
+    padding: 60px 10px;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
 }
 
 .produk-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   padding: 0 2rem;
 }
 
 .produk-item {
-  padding: 2rem;
-  text-align: center;
   background: white;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
-  transition: tranform 0.3s ease;
-}
-
-.produk-item:hover {
-  transform: translateY(-5px);
 }
 
 .produk-item img {
   width: 100%;
   height: auto;
   border-radius: 10px;
-}
-
-.produk-item img:hover {
-  opacity: 0.9;
 }
 
 .slider {
@@ -131,12 +153,4 @@ footer {
 
 .slide.active {
   display: block;
-}
-
-.ulasan {
-  height: 80vh;
-  background: url('../image/brick-wall-1.jpg') no-repeat center center/cover;
-  padding: 2rem;
-  color: white;
-  border-radius: 10px;
 }
