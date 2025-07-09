@@ -76,7 +76,7 @@ body {
 
 video {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   height: auto;
   margin-top: 1rem;
   border-radius: 8px;
@@ -117,8 +117,10 @@ footer {
 .produk-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 0 2rem;
+  max-width: 1200px;
+  margin:auto;
 }
 
 .produk-item {
@@ -131,9 +133,11 @@ footer {
 
 .produk-item img {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
+  objeck-fit: cover;
+  display: block;
   height: auto;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
