@@ -1,60 +1,158 @@
 <!-- Struktur HTML sama, hanya bagian isi berubah -->
-
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Bata Interior Design | Produk</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
 
+<body>
   <header class="navbar">
     <h1>The Bata Interior Design</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="produk.html">Produk</a>
-      <a href="ulasan.html">Ulasan</a>
+      <a href="Produk.html" class="active">Produk</a>
+      <a href="Ulasan.html">Ulasan</a>
     </nav>
   </header>
 
-  <img control>
-  <h2 style="text-align:center; margin: 2rem 0;">Produk Interior</h2> 
-    <div class="produk-item">
-      <h3>Kicthen Room</h3>
-      <p>Desain ruang tamu modern dan minimalis.</p>
-      <img src="image/kitchenroom.jpg" alt="Kicthen Room">
-      <img src="image/kitchenroom-1.jpg" alt="Kicthen Room">
-      <img src="image/kitchenroom-2.jpg" alt="Kicthen Room">
-    </div>
-    <div class="produk-item">
-      <h3>Kamar Tidur</h3>
-      <p>Kenyamanan tidur dalam suasana elegan.</p>
-      <img src="image/bedroom.jpg" alt="Bedroom">
-      <img src="image/bedroom-1.jpg" alt="Bedroom">
-    </div>
-    <div class="produk-item">
-      <h3>Living Room</h3>
-      <p>Ruang tamu yang nyaman dan menyenangkan.</p>
-      <img src="image/living-room.jpg" alt="Livingroom">
-      <img src="image/living-room-1.jpg" alt="Livingroom">
-    </div>
-    <div class="produk-item">
-      <h3>Bath Room</h3>
-      <p>Seperti.....</p>
-      <img src="image/bathroom-minimaliz.jpg" alt="Bathroom">
-      <img src="image/bathroom-real-estate.jpg" alt="Bathroom">
-    </div>
-    <div class="produk-item">
-      <h3>Apartmen Room</h3>
-      <p>Ruang tamu yang nyaman dan menyenangkan.</p>
-      <img src="image/apartment-room.jpg" alt="Apartment">
-      <img src="image/apartment-room-1.jpg" alt="Apartment">
-    </div>
-  </img>
-  </div>
-</body>
+ <main>
+   <h2 style="text-align:center; margin: 2rem 0;">Produk Interior</h2> 
+    
+   <div class="produk-container">
+      
+      <!-- Daftar Produk (semua sama pola)-->
+      <div class="produk-item">
+        <h3>Kicthen Room</h3>
+        <p>Desain ruang tamu modern dan minimalis.</p>
 
- <footer>
+        <div class="slider-wrapper">
+          <button class="slide-btn left">&#10094;</button>
+          <div class="image-slider">  
+            <img src="image/kitchenroom.jpg" alt="Kicthen Room" />
+            <img src="image/kitchenroom-1.jpg" alt="Kicthen Room" />
+            <img src="image/kitchenroom-2.jpg" alt="Kicthen Room" />
+          </div>
+          <button class="slide-btn right">&#10095;</button>
+        </div>
+        
+      </div>
+    
+      <div class="produk-item">
+        <h3>Kamar Tidur</h3>
+        <p>Kenyamanan tidur dalam suasana elegan.</p>
+
+        <div class="slider-wrapper">
+          <button class="slide-btn left">&#10094;</button>
+          <div class="image-slider"> 
+            <img src="image/bedroom.jpg" alt="Bedroom" />
+            <img src="image/bedroom-1.jpg" alt="Bedroom" />
+          </div>
+          <button class="slide-btn right">&#10095;</button>
+        </div>
+      </div>
+    
+      <div class="produk-item">
+        <h3>Living Room</h3>
+        <p>Ruang tamu yang nyaman dan menyenangkan.</p>  
+        
+        <div class="slider-wrapper">
+          <button class="slide-btn left">&#10094;</button>
+          <div class="image-slider">
+            <img src="image/living-room.jpg" alt="Livingroom" />
+            <img src="image/living-room-1.jpg" alt="Livingroom" />
+          </div>
+          <button class="slide-btn right">&#10095;</button>
+        </div>
+      </div>
+    
+      <div class="produk-item">
+        <h3>Bath Room</h3>
+        <p>Kamar mandi modern dengan konsep minimalis dan elegan.</p>
+
+        <div class="slider-wrapper">
+          <button class="slide-btn left">&#10094;</button>
+          <div class="image-slider">
+            <img src="image/bathroom-minimaliz.jpg" alt="Bathroom" />
+            <img src="image/bathroom-real-estate.jpg" alt="Bathroom" />
+          </div>
+          <button class="slide-btn right">&#10095;</button>
+        </div>
+      </div>
+    
+      <div class="produk-item">
+        <h3>Apartment Room</h3>
+        <p>Desain ruangan apartemen yang efisien namun tetap mewah.</p>
+
+        <div class="slider-wrapper">
+          <button class="slide-btn left">&#10094;</button>
+          <div class="image-slider">
+            <img src="image/apartment-room.jpg" alt="Apartment" />
+            <img src="image/apartment-room-1.jpg" alt="Apartment" />
+          </div>
+          <button class="slide-btn right">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </main> 
+
+  <!-- Lightbox Container-->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Preview" />
+  </div>
+  
+  <!-- Footer-->
+  <footer>
     <a href="https://wa.me/6287730076888" class="btn" target="_blank">Konsultasi via WhatsApp</a>
     <p>© 2025 Interior Design. All rights reserved.</p>
   </footer>
+
+  <!-- Script: slide + lightbox -->
+  <script>
+    //Slider geser
+    document.querySelectorAll('.produk-item').forEach(item => {
+      const slider = item.querySelector('.image-slider');
+      const btnLeft = item.querySelector('.slide-btn.left');
+      const btnRight = item.querySelector('.slide-btn.right');
+
+      btnLeft.addEventListener('click', () => {
+        slider.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+
+      btnRight.addEventListener('click', () => {
+        slider.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+
+      //Lightbox
+      const images = slider.querySelectorAll('img');
+      images.forEach(img => {
+        img.addEventListener('click', () => {
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightbox-img');
+          lightboxImg.src =img.src;
+          lightbox.style.display = 'flex';
+        });
+      });  
+    });
+
+    //Tutup lightbox
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    //Tutup Lightbox jika klik di luar gambar
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+        closeLightbox();
+      }
+    });
+
+  </script>
+
+</body>
+</html>
+
+
