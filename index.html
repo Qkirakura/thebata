@@ -10,26 +10,28 @@
   <!-- Open Graph untuk tampilan di WhatsApp, Facebook -->
   <meta property="og:title" content="The Bata Interior Design | Profesional & Elegan" />
   <meta property="og:description" content="Wujudkan interior impian Anda. Konsultasi gratis via WhatsApp!" />
-  <meta property="og:image" content="https://thebata.com/images/preview.jpg" />
-  <meta property="og:url" content="https://thebata.com/" />
+  <meta property="og:image" content="https://thebata.com/image/brick-wall.jpg" />
+  <meta property="og:url" content="D:\HTM\TheBata" /><!--ttps://thebata.com/-->
   <meta property="og:type" content="website" />
 
   <!-- Icon Website -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
    <title>The Bata Interior Design | Home</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <header class="navbar">
-    <h1>The Bata Interior Design</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="produk.html">Produk</a>
-      <a href="ulasan.html">Ulasan</a>
-    </nav>
+    <div class="fixed-header">
+      <h1>The Bata Interior Design</h1>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="Produk.html">Produk</a>
+        <a href="Ulasan.html">Ulasan</a>
+      </nav>
+    </div>
   </header>
- <main>
+ <main class="content">
   <section class="hero">
     <div class="hero-content">
      <h2>Wujudkan Interior Impian Anda</h2>
@@ -38,9 +40,10 @@
     </div>
   </section>
 
-  <section class="video-section">
-    <h2>Virtual Tour Interior</h2>
-    <video controls>
+  <h2>Virtual Tour Interior</h2>
+  <section class="video-container">
+    
+    <video controls muted loop>
       <source src="video/tour-Interior-1.mp4" type="video/mp4">
       Browser Anda tidak mendukung video.
     </video>
