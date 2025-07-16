@@ -78,7 +78,7 @@ video {
 }
 
 .video-container {
-  position: center;
+  position: flex;
   width: 100%;
   max-width: 100%; /* bisa juga 800px kalau ingin dibatasi */
   padding-bottom: 56.25%; /* Rasio 16:9 */
