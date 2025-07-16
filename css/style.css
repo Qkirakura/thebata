@@ -88,7 +88,7 @@ video {
 }
 
 .video-container video {
-  position: absolute;
+  position: flex;
   top: 0;
   left: 0;
   width: 100%;
