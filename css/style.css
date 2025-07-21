@@ -74,6 +74,12 @@ body {
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
+}
+
+main h2 {
+  text-align: center;
+  margin: 2rem 0 0.5rem;
 }
 
 .video-section {
@@ -81,6 +87,7 @@ body {
   text-align: center;
 }
 
+/* Video Slider Style */
 video {
   width: 100%;
   max-width: 600px;
@@ -88,6 +95,84 @@ video {
   margin-top: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-slider {
+  position: relative;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-track {
+  display: flex;
+  justify-content: center; /* agar konten tetap tengah saat < 2 item */
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.video-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.video-item video {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.video-slider .slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.video-slider .slide-btn.left {
+  left: 10px;
+}
+
+.video-slider .slide-btn.right {
+  right: 10px;
+}
+
+.video-slider .slide-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-item {
+    max-width: 90%;
+  }
+
+   .video-track {
+    justify-content: flex-start; /* agar slide bisa digeser ke kiri/kanan di HP */
+  }
+
+  .hero-content {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 .video-container {
@@ -119,12 +204,24 @@ video {
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transorm: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 500px) {
+  .video-item {
+    max-width: 90%;
+  }
+
+   .video-track {
+    justify-content: flex-start; /* agar slide bisa digeser ke kiri/kanan di HP */
+  }
   .image-slider {
     padding: 0 1rem;
   }
@@ -132,6 +229,16 @@ video {
   .slide-btn {
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
+  }
+
+    .hero {
+    height: 60vh;
+    background-position: center;
+  }
+
+  .hero-content {
+    padding: 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -228,6 +335,14 @@ footer {
   color: white;
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #222;
+  color: white;
+}
+
 footer .btn {
   display: inline-block;
   background: #25D366;
@@ -244,7 +359,7 @@ footer .btn {
   position: fixed;
   z-index: 1000;
   top: 0; left: 0;
-  width :100vw;
+  width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   justify-content: center;
@@ -256,7 +371,7 @@ footer .btn {
   max-height: 90%;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  animation : zoomIn 0.4s ease;
+  animation: zoomIn 0.4s ease;
 }
 
 .lightbox:target {
