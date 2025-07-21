@@ -44,6 +44,7 @@ body {
   text-align: center;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  height: 100px; /* atau perkiraan tinggi header */
 }
 
 .hero {
@@ -90,14 +91,62 @@ main h2 {
   align-items: center;
 }
 
+/* Overlay gelap saat video diputar */
 .video-slider.playing::before {
   content: '';
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* Overlay aktif saat video diputar */
+.video-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+/* Kontainer video dalam overlay */
+.video-overlay video {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(255,255,255,0.3);
+}
+
+/* Tombol close */
+.video-close {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2001;
+}
+
+/* Fokuskan video yang sedang diputar */
+.video-item.focused {
+  z-index: 1000;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+/* Pastikan lapisan video muncul di atas overlay */
+.video-slider .video-item video {
+  position: static;
+  z-index: auto;
 }
 
 .video-track {
@@ -110,7 +159,7 @@ main h2 {
   scroll-snap-type: x mandatory;
   padding: 1rem 0;
   width: 100%;
-  max-width: 100%;
+  max-width: 100%;  
 }
 
 .video-item {
@@ -121,11 +170,14 @@ main h2 {
   align-items: center;
   width: 100%;
   max-width: 600px;
+  animation: fadeInUp 0.6s ease;
+  overflow: hidden;
 }
 
 .video-item video {
   width: 100%;
-  height: 600px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -314,29 +366,27 @@ footer .btn {
   text-decoration: none;
 }
 
-/* Lightbox */
+/* Lightbox umum untuk gambar & video */
 .lightbox {
   display: none;
   position: fixed;
-  z-index: 1000;
   top: 0; left: 0;
-  width :100vw;
+  width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   justify-content: center;
   align-items: center;
+  z-index: 3000;
+  padding: 1rem;
 }
 
+.lightbox video,
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 90vw;
+  max-height: 90vh;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  animation : zoomIn 0.4s ease;
-}
-
-.lightbox:target {
-  display: flex;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  animation: zoomIn 0.3s ease;
 }
 
 .lightbox-close {
@@ -347,6 +397,42 @@ footer .btn {
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+  z-index: 3001;
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+/* Navigasi Lightbox Video */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 3002;
+  border-radius: 8px;
+}
+
+.lightbox-nav.left {
+  left: 1rem;
+}
+
+.lightbox-nav.right {
+  right: 1rem;
+}
+
+#videoContainer iframe,
+#videoContainer video {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(255,255,255,0.3);
 }
 
 .fixed-footer {
@@ -362,11 +448,10 @@ footer .btn {
   box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
 
-
+/* Cegah konten di bawah tertimpa */
 .content {
-  padding-top: 100px;
-  padding-bottom: 60px;
-  width: 100%;
+  padding-top: 120px; /* lebih tinggi dari header tetap */
+  padding-bottom: 80px; /* agar tidak tertutup footer */
   max-width: 1200px;
   margin: 0 auto;
 }
