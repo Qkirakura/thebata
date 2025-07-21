@@ -35,6 +35,19 @@ body {
   color: #e53935;
 }
 
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white; /* merah bata */
+  color: rgb(5, 5, 5);
+  padding: 1rem 2rem;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
 .hero {
   height: 80vh;
   background: url('../image/brick-wall.jpg') center/cover no-repeat;
@@ -206,20 +219,6 @@ main h2 {
 
 .slide-btn:hover {
   background: rgba(0,0,0,0.7);
-}
-
-
-.fixed-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: white; /* merah bata */
-  color: rgb(5, 5, 5);
-  padding: 1rem 2rem;
-  text-align: center;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 footer {
