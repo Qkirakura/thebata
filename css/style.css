@@ -290,6 +290,7 @@ footer .btn {
 .content {
   padding-top: 100px;  /* tinggi header */
   padding-bottom: 60px; /* tinggi footer */
-  max-width: 800px;
-  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
