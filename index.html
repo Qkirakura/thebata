@@ -1,102 +1,143 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Wujudkan interior impian Anda bersama The Bata Interior Design. Desain eksklusif, layanan profesional, dan konsultasi gratis via WhatsApp.">
-  <meta name="keywords" content="desain interior, interior rumah, jasa interior, interior minimalis, interior elegan, interior modern, interior Tegal">
-  <meta name="author" content="The Bata Interior Design">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Wujudkan interior impian Anda bersama The Bata Interior Design. Desain eksklusif, layanan profesional, dan konsultasi gratis via WhatsApp.">
+    <meta name="keywords" content="desain interior, interior rumah, jasa interior, interior minimalis, interior elegan, interior modern, interior Tegal">
+    <meta name="author" content="The Bata Interior Design">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="The Bata Interior Design | Profesional & Elegan" />
-  <meta property="og:description" content="Wujudkan interior impian Anda. Konsultasi gratis via WhatsApp!" />
-  <meta property="og:image" content="https://thebata.com/image/brick-wall.jpg" />
-  <meta property="og:url" content="https://thebata.com/" />
-  <meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Bata Interior Design | Profesional & Elegan" />
+    <meta property="og:description" content="Wujudkan interior impian Anda. Konsultasi gratis via WhatsApp!" />
+    <meta property="og:image" content="https://thebata.com/image/brick-wall.jpg" />
+    <meta property="og:url" content="https://thebata.com/" />
+    <meta property="og:type" content="website" />
 
-  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
-  <title>The Bata Interior Design | Home</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+    <title>The Bata Interior Design | Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
 
-  <header class="navbar">
-    <div class="fixed-header">
-      <h1>The Bata Interior Design</h1>
-      <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="produk.html">Produk</a>
-        <a href="ulasan.html">Ulasan</a>
-      </nav>
+    <header class="navbar">
+      <div class="fixed-header">
+        <h1>The Bata Interior Design</h1>
+        <nav>
+          <a href="index.html" class="active">Home</a>
+          <a href="produk.html">Produk</a>
+          <a href="ulasan.html">Ulasan</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h2 style="text-align:center; margin: 2rem 0;">Home</h2> 
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Wujudkan Interior Impian Anda</h2>
+          <p>Desain profesional, modern, dan elegan.</p>
+          <a href="https://wa.me/6287730076888" class="btn" target="_blank">Konsultasi via WhatsApp</a>
+        </div>
+      </section>
+
+      <h2>Virtual Tour Interior</h2>
+      <section class="video-slider">
+        <button class="slide-btn left" onclick="slideVideo(-1)">&#8249;</button>
+        <div class="video-track" id="videoTrack">
+          <div class="video-item">
+            <video controls muted loop>
+              <source src="video/tour-Interior-1.mp4" type="video/mp4">
+              Browser Anda tidak mendukung video.
+            </video>
+          </div>
+          <div class="video-item">
+            <video controls muted loop>
+              <source src="video/tour-Interior-2.mp4" type="video/mp4">
+              Browser Anda tidak mendukung video.
+            </video>
+          </div>
+        </div>
+        <button class="slide-btn right" onclick="slideVideo(1)">&#8250;</button>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://wa.me/6287730076888" class="btn" target="_blank">Konsultasi via WhatsApp</a>
+      <p>© 2025 Interior Design. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox Video dengan Navigasi -->
+    <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
+      <span class="lightbox-close" onclick="closeVideoLightbox()">&times;</span>
+      <button class="lightbox-nav left" onclick="prevVideo(event)">&#10094;</button>
+      <button class="lightbox-nav right" onclick="nextVideo(event)">&#10095;</button>
+      <div id="videoContainer"></div>
     </div>
-  </header>
 
-  <main>
-    <h2 style="text-align:center; margin: 2rem 0;">Home</h2> 
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Wujudkan Interior Impian Anda</h2>
-        <p>Desain profesional, modern, dan elegan.</p>
-        <a href="https://wa.me/6287730076888" class="btn" target="_blank">Konsultasi via WhatsApp</a>
-      </div>
-    </section>
+    <script>
+      const videoLightbox = document.getElementById('videoLightbox');
+      const videoContainer = document.getElementById('videoContainer');
+      let currentIndex = 0;
 
-    <h2>Virtual Tour Interior</h2>
-    <section class="video-slider">
-      <button class="slide-btn left" onclick="slideVideo(-1)">&#8249;</button>
-      <div class="video-track" id="videoTrack">
-        <div class="video-item">
-          <video controls muted loop>
-            <source src="video/tour-Interior-1.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video.
-          </video>
-        </div>
-        <div class="video-item">
-          <video controls muted loop>
-            <source src="video/tour-Interior-2.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video.
-          </video>
-        </div>
-      </div>
-      <button class="slide-btn right" onclick="slideVideo(1)">&#8250;</button>
-    </section>
-  </main>
+      // Daftar video: bisa berupa file lokal atau YouTube link
+      const videoSources = [
+        { type: 'file', src: 'video/tour-Interior-1.mp4' },
+        { type: 'file', src: 'video/tour-Interior-2.mp4' },
+        { type: 'youtube', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }, // contoh youtube
+      ];
 
-  <footer>
-    <a href="https://wa.me/6287730076888" class="btn" target="_blank">Konsultasi via WhatsApp</a>
-    <p>© 2025 Interior Design. All rights reserved.</p>
-  </footer>
+      function openVideo(index) {
+        document.body.style.overflow = 'hidden';
+        currentIndex = index;
+        videoContainer.innerHTML = ''; // kosongkan isi sebelumnya
+        
+        let content;
 
-  <script>
-    const videos = document.querySelectorAll('.video-item video');
-    const slider = document.querySelector('.video-slider');
+        if (videoSources[index].type === 'youtube') {
+          content = document.createElement('iframe');
+          content.src = videoSources[index].src + '?autoplay=1&rel=0';
+          content.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          content.allowFullscreen = true;
+        } else {
+          content = document.createElement('video');
+          content.src = videoSources[index].src;
+          content.controls = true;
+          content.autoplay = true;
+        }
 
-    videos.forEach(video => {
-      video.addEventListener('play', () => {
-        // Hilangkan fokus dari semua video lain
-        document.querySelectorAll('.video-item').forEach(item => item.classList.remove('focused'));
+        videoContainer.appendChild(content);
+        videoLightbox.style.display = 'flex';
+      }
 
-        // Tambahkan fokus ke video yang diputar
-        video.parentElement.classList.add('focused');
+      function closeVideoLightbox() {
+        document.body.style.overflow = '';
+        videoLightbox.style.display = 'none';
+        videoContainer.innerHTML = '';
+      }
 
-        // Tambahkan overlay redup
-        slider.classList.add('playing');
+      function nextVideo(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % videoSources.length;
+        openVideo(currentIndex);
+      }
+
+      function prevVideo(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+        openVideo(currentIndex);
+      }
+
+      // Aktifkan saat klik pada video-item
+      document.querySelectorAll('.video-item video').forEach((video, i) => {
+        video.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          video.pause();
+          openVideo(i);
+        });
       });
-
-      video.addEventListener('pause', () => {
-        // Hapus efek fokus dan overlay saat video berhenti
-        video.parentElement.classList.remove('focused');
-        slider.classList.remove('playing');
-      });
-
-      video.addEventListener('ended', () => {
-        video.parentElement.classList.remove('focused');
-        slider.classList.remove('playing');
-      });
-    });
-  </script>
-
-
-</body>
+    </script>
+  </body>
 </html>
