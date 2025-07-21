@@ -26,13 +26,14 @@
       <h1>The Bata Interior Design</h1>
       <nav>
         <a href="index.html" class="active">Home</a>
-        <a href="produk.html">Produk</a>
-        <a href="ulasan.html">Ulasan</a>
+        <a href="Produk.html">Produk</a>
+        <a href="Ulasan.html">Ulasan</a>
       </nav>
     </div>
   </header>
 
-  <main class="content">
+  <main>
+    <h2 style="text-align:center; margin: 2rem 0;">Home</h2> 
     <section class="hero">
       <div class="hero-content">
         <h2>Wujudkan Interior Impian Anda</h2>
@@ -68,15 +69,34 @@
   </footer>
 
   <script>
-    function slideVideo(direction) {
-      const track = document.getElementById('videoTrack');
-      const scrollAmount = track.querySelector('.video-item').offsetWidth + 16;
-      track.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
+    const videos = document.querySelectorAll('.video-item video');
+    const slider = document.querySelector('.video-slider');
+
+    videos.forEach(video => {
+      video.addEventListener('play', () => {
+        // Hilangkan fokus dari semua video lain
+        document.querySelectorAll('.video-item').forEach(item => item.classList.remove('focused'));
+
+        // Tambahkan fokus ke video yang diputar
+        video.parentElement.classList.add('focused');
+
+        // Tambahkan overlay redup
+        slider.classList.add('playing');
       });
-    }
+
+      video.addEventListener('pause', () => {
+        // Hapus efek fokus dan overlay saat video berhenti
+        video.parentElement.classList.remove('focused');
+        slider.classList.remove('playing');
+      });
+
+      video.addEventListener('ended', () => {
+        video.parentElement.classList.remove('focused');
+        slider.classList.remove('playing');
+      });
+    });
   </script>
+
 
 </body>
 </html>
