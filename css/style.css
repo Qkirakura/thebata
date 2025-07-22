@@ -86,6 +86,8 @@ main h2 {
 .video-slider {
   position: relative;
   padding: 2rem 1rem;
+  overflow: hidden;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,6 +158,7 @@ main h2 {
   gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   padding: 1rem 0;
   width: 100%;
@@ -164,12 +167,14 @@ main h2 {
 
 .video-item {
   flex: 0 0 auto;
+  flex-shrink: 0;
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 600px;
+  min-width: 80%;
   animation: fadeInUp 0.6s ease;
   overflow: hidden;
 }
@@ -198,9 +203,9 @@ main h2 {
   color: white;
   border: none;
   font-size: 2rem;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
   border-radius: 50%;
 }
 
@@ -228,11 +233,6 @@ main h2 {
 
   .image-slider {
     padding: 0 1rem;
-  }
-
-  .slide-btn {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
   }
 
   .hero {
