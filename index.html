@@ -77,79 +77,76 @@
     </div>
 
     <script>
-      const videoLightbox = document.getElementById('videoLightbox');
-      const videoContainer = document.getElementById('videoContainer');
-      let currentIndex = 0;
-      // Fungsi slider horizontal untuk video
-      function slideVideo(direction) {
-        const track = document.getElementById('videoTrack');
-        const scrollAmount = track.offsetWidth / 2;
-        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-      }
+        const videoLightbox = document.getElementById('videoLightbox');
+        const videoContainer = document.getElementById('videoContainer');
+        let currentIndex = 0;
 
-      // Daftar video: bisa berupa file lokal atau YouTube link
-      const videoSources = [
-        { type: 'file', src: 'video/tour-Interior-1.mp4' },
-        { type: 'file', src: 'video/tour-Interior-2.mp4' },
-        { type: 'youtube', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }, // contoh youtube
-      ];
+        const videoSources = [
+          { type: 'file', src: 'video/tour-Interior-1.mp4' },
+          { type: 'file', src: 'video/tour-Interior-2.mp4' },
+          { type: 'youtube', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+        ];
 
-      function openVideo(index) {
-        document.body.style.overflow = 'hidden';
-        currentIndex = index;
-        videoContainer.innerHTML = ''; // kosongkan isi sebelumnya
-        
-        let content;
+        function openVideo(index) {
+          currentIndex = index;
+          videoContainer.innerHTML = '';
+          document.body.style.overflow = 'hidden';
 
-        if (videoSources[index].type === 'youtube') {
-          content = document.createElement('iframe');
-          content.src = videoSources[index].src + '?autoplay=1&rel=0';
-          content.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-          content.allowFullscreen = true;
-        } else {
-          content = document.createElement('video');
-          content.src = videoSources[index].src;
-          content.controls = true;
-          content.autoplay = true;
+          let content;
+
+          if (videoSources[index].type === 'youtube') {
+            content = document.createElement('iframe');
+            content.src = videoSources[index].src + '?autoplay=1&rel=0';
+            content.setAttribute('allow', 'autoplay; encrypted-media');
+            content.setAttribute('allowfullscreen', '');
+          } else {
+            content = document.createElement('video');
+            content.src = videoSources[index].src;
+            content.controls = true;
+            content.autoplay = true;
+            content.playsInline = true; // penting untuk mobile
+            content.muted = true; // autoplay butuh muted di mobile
+          }
+
+          videoContainer.appendChild(content);
+          videoLightbox.style.display = 'flex';
         }
 
-        videoContainer.appendChild(content);
-        videoLightbox.style.display = 'flex';
-      }
-
-      function closeVideoLightbox() {
-        document.body.style.overflow = '';
-        videoLightbox.style.display = 'none';
-        videoContainer.innerHTML = '';
-      }
-
-      function nextVideo(e) {
-        e.stopPropagation();
-        currentIndex = (currentIndex + 1) % videoSources.length;
-        openVideo(currentIndex);
-      }
-
-      function prevVideo(e) {
-        e.stopPropagation();
-        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
-        openVideo(currentIndex);
-      }
-
-      videoLightbox.addEventListener('click', (e) => {
-        if (e.target === videoLightbox) {
-          closeVideoLightbox();
+        function closeVideoLightbox() {
+          videoLightbox.style.display = 'none';
+          videoContainer.innerHTML = '';
+          document.body.style.overflow = '';
         }
-      });
 
-      // Aktifkan saat klik pada video-item
-      document.querySelectorAll('.video-item video').forEach((video, i) => {
-        video.addEventListener('click', (e) => {
-          e.preventDefault();
+        function nextVideo(e) {
           e.stopPropagation();
-          video.pause();
-          openVideo(i);
+          currentIndex = (currentIndex + 1) % videoSources.length;
+          openVideo(currentIndex);
+        }
+
+        function prevVideo(e) {
+          e.stopPropagation();
+          currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+          openVideo(currentIndex);
+        }
+
+        videoLightbox.addEventListener('click', (e) => {
+          if (e.target === videoLightbox) {
+            closeVideoLightbox();
+          }
         });
-      });
-    </script>
+
+        // ⛳ FIXED: Tambahkan event click langsung setelah DOM siap
+        window.addEventListener('DOMContentLoaded', () => {
+          document.querySelectorAll('.video-item video').forEach((video, i) => {
+            video.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              video.pause();
+              openVideo(i);
+            });
+          });
+        });
+      </script>
   </body>
 </html>
