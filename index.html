@@ -47,13 +47,13 @@
         <button class="slide-btn left" onclick="slideVideo(-1)">&#8249;</button>
         <div class="video-track" id="videoTrack">
           <div class="video-item">
-            <video controls muted loop>
+            <video muted loop>
               <source src="video/tour-Interior-1.mp4" type="video/mp4">
               Browser Anda tidak mendukung video.
             </video>
           </div>
           <div class="video-item">
-            <video controls muted loop>
+            <video muted loop>
               <source src="video/tour-Interior-2.mp4" type="video/mp4">
               Browser Anda tidak mendukung video.
             </video>
@@ -68,12 +68,12 @@
       <p>© 2025 Interior Design. All rights reserved.</p>
     </footer>
 
-    <!-- Lightbox Video dengan Navigasi -->
+  <!-- Lightbox -->
     <div id="videoLightbox" class="lightbox">
       <span class="lightbox-close" onclick="closeVideoLightbox()">&times;</span>
       <button class="lightbox-nav left" onclick="prevVideo(event)">&#10094;</button>
-      <button class="lightbox-nav right" onclick="nextVideo(event)">&#10095;</button>
       <div id="videoContainer"></div>
+      <button class="lightbox-nav right" onclick="nextVideo(event)">&#10095;</button>
     </div>
 
     <script>
