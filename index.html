@@ -69,7 +69,7 @@
     </footer>
 
     <!-- Lightbox Video dengan Navigasi -->
-    <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
+    <div id="videoLightbox" class="lightbox">
       <span class="lightbox-close" onclick="closeVideoLightbox()">&times;</span>
       <button class="lightbox-nav left" onclick="prevVideo(event)">&#10094;</button>
       <button class="lightbox-nav right" onclick="nextVideo(event)">&#10095;</button>
@@ -80,6 +80,12 @@
       const videoLightbox = document.getElementById('videoLightbox');
       const videoContainer = document.getElementById('videoContainer');
       let currentIndex = 0;
+      // Fungsi slider horizontal untuk video
+      function slideVideo(direction) {
+        const track = document.getElementById('videoTrack');
+        const scrollAmount = track.offsetWidth / 2;
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
 
       // Daftar video: bisa berupa file lokal atau YouTube link
       const videoSources = [
@@ -128,6 +134,12 @@
         currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
         openVideo(currentIndex);
       }
+
+      videoLightbox.addEventListener('click', (e) => {
+        if (e.target === videoLightbox) {
+          closeVideoLightbox();
+        }
+      });
 
       // Aktifkan saat klik pada video-item
       document.querySelectorAll('.video-item video').forEach((video, i) => {
