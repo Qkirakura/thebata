@@ -136,6 +136,12 @@
           }
         });
 
+        function slideVideo(direction) {
+          const track = document.getElementById('videoTrack');
+          const scrollAmount = track.offsetWidth / 2;
+          track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
         // ⛳ FIXED: Tambahkan event click langsung setelah DOM siap
         window.addEventListener('DOMContentLoaded', () => {
           document.querySelectorAll('.video-item video').forEach((video, i) => {
